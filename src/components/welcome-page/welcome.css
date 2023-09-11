@@ -43,13 +43,12 @@
     justify-content: center;
   }
   .button {
-    min-width: 152px;
+    min-width: 120px;
     min-height: 32px;
     font-family: "serif";
-    font-size: 19px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 300;
     color: #313133;
-    background: #4fd1c5;
     background: linear-gradient(
       90deg,
       rgb(255 253 215) 0%,
@@ -59,9 +58,6 @@
     border-radius: 1000px;
     box-shadow: 0 12px 24px rgb(152 122 37 / 91%);
     cursor: pointer;
-    outline: none;
-    position: relative;
-    padding: 10px;
   }
 
   .button:active {

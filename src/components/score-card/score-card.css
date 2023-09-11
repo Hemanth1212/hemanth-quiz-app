@@ -1,0 +1,16 @@
+.score-card {
+  box-shadow: #c28d2a 0px 16px 48px 0px;
+  border-radius: 50%;
+  border: 1px solid c28d2a;
+  height: 200px;
+  width: 200px;
+}
+
+.score-text {
+  margin-top: 44%;
+  text-align: center;
+}
+
+.score {
+  text-align: center;
+}

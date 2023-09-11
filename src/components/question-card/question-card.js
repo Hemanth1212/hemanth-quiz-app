@@ -7,7 +7,7 @@ const makeChoices = (question, setState) => {
   let correctChoice = question.correct_answer;
   incChoices.push(correctChoice);
   incChoices = incChoices.map((choice) =>
-    choice.replaceAll("&#039;", "'").replaceAll("&quot;", '"')
+    choice.replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&amp;","&")
   );
   setState((value) => {
     return {
@@ -22,7 +22,8 @@ const showQuestion = (questionIndex, questions, setState, action) => {
     let encoded = encodeURI(questions[index].question);
     const ques = decodeURI(encoded)
       .replaceAll("&#039;", "'")
-      .replaceAll("&quot;", '"');
+      .replaceAll("&quot;", '"')
+      .replaceAll("&amp;","&");
     return {
       ...value,
       questionText: ques,
@@ -57,21 +58,20 @@ const answerClicked = (index, setState) => {
 };
 
 //COMPONENT -------->
-const QuestionCard = ({ questions }) => {
+const QuestionCard = ({ questions,getScore }) => {
   const [state, setState] = useState({
     questionIndex: 0,
     questionText: "",
     selectedOptions: [],
     choices: [],
   });
-  const { questionText, choices, questionIndex } = state;
+  const { questionText, choices, questionIndex, selectedOptions } = state;
   let encoded = encodeURI(questions[questionIndex].question);
   const question = questions[questionIndex];
   const ques = decodeURI(encoded)
     .replaceAll("&#039;", "'")
     .replaceAll("&quot;", '"');
   !questionText && setState({ ...state, questionText: ques });
-  console.log({ state });
   choices.length !== 4 && makeChoices(question, setState);
 
   return (
@@ -94,10 +94,10 @@ const QuestionCard = ({ questions }) => {
       </div>
       <div className="action-buttons">
         <div>
-          <button className="button-73" onClick={() => showQuestion(questionIndex, questions, setState,"prev")}>Prev</button>
+          <button className="button-73"  disabled={questionIndex === 0} onClick={() => showQuestion(questionIndex, questions, setState,"prev")}>Prev</button>
         </div>
         <div>
-          <button className="button-73">Submit</button>
+          {questionIndex === 14 && <button className="button-73" onClick={() => getScore(selectedOptions)}>Submit</button>}
         </div>
         <div>
           <button
@@ -107,7 +107,6 @@ const QuestionCard = ({ questions }) => {
           >
             Next
           </button>
-          
         </div>
       </div>
     </div>

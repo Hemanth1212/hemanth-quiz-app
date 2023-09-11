@@ -18,6 +18,7 @@
   max-width: 200px;
   text-align: center;
   cursor: pointer;
+  width: 100%;
 }
 
 .selected-choice {
@@ -52,6 +53,8 @@
   font-size: 2.2vh;
   text-align: center;
   font-family: "serif";
+  word-wrap: break-word;
+  width: 100%;
 }
 
 @media screen and (max-width: 375px) {
@@ -91,13 +94,20 @@
   touch-action: manipulation;
 }
 
-.button-73:hover {
+.button-73:hover:enabled {
   background-color: #ffc229;
   box-shadow: #ff6314 0 -6px 8px inset;
   transform: scale(1.125);
 }
-
-.button-73:active {
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+.button-73:active:enabled {
   transform: scale(1.025);
 }
 
@@ -105,6 +115,12 @@
   .button-73 {
     font-size: 24px;
     padding: 0.1rem 1rem;
+    font-weight: 100;
+  }
+}
+@media screen and (max-width: 375px) {
+  .button-73 {
+    font-size: 14px;
     font-weight: 100;
   }
 }
