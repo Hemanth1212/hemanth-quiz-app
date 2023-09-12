@@ -1,4 +1,5 @@
-import { ReactComponent as QuizLogo } from "../assets/quiz.svg";
+//import { ReactComponent as QuizLogo } from "../assets/quiz.svg";
+import logo from "../assets/quiz.svg"
 import React from "react";
 import "./welcome.css";
 
@@ -7,7 +8,7 @@ function WelcomePage({ getStartedClicked }) {
     <div className="welcome-page">
       <div className="quiz-time">Quiz Time</div>
       <div className="quiz-logo">
-        <QuizLogo />
+        <img src={logo} alt=""></img>
       </div>
       <div className="start-button">
         <div className="wrap">
